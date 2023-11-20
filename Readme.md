@@ -25,5 +25,5 @@ Create a file named `hld-config.json` in the directory where you want to generat
 
 ## Create a documentation
 ```bash
-yo hld build
+yo vue-happy-little-docs build
 ```
