@@ -1,0 +1,37 @@
+{
+  "name": "generator-vue-happy-little-doc",
+  "version": "1.0.0",
+  "description": "Generator for Documentation",
+  "main": "generators/app/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "test"
+  },
+  "files": [
+    "generators"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordrepha1980/vue-happy-little-doc.git"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Christoph Duengel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lordrepha1980/vue-happy-little-doc/issues"
+  },
+  "homepage": "https://github.com/lordrepha1980/vue-happy-little-doc#readme",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "figlet": "^1.7.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.1.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "nunjucks": "^3.2.4",
+    "path": "^0.12.7",
+    "vue": "^3.3.8",
+    "yeoman-generator": "^3.1.1"
+  }
+}

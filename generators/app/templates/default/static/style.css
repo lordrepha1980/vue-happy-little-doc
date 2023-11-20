@@ -1,0 +1,152 @@
+/**
+ * Body CSS
+ */
+
+html,
+body {
+  height: 100%;
+}
+
+pre[class*=language-].line-numbers {
+    padding-left: 0em !important;
+    padding-top: 0em !important;
+    padding-bottom: 0em !important;
+}
+
+pre[class*=language-].line-numbers>code {
+    padding-left: 3.8em;
+}
+
+.line-numbers .line-numbers-rows {
+    left: 0em !important;
+}
+
+
+/**
+ * Layout CSS
+ */
+
+#header {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  transition: left 0.2s;
+}
+
+#sidedrawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  left: -200px;
+  overflow: auto;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+
+#content-wrapper {
+  min-height: 100%;
+  overflow-x: hidden;
+  margin-left: 0px;
+  transition: margin-left 0.2s;
+  margin-top: 50px;
+  /* sticky bottom */
+  box-sizing: border-box;
+  margin-bottom: -60px;
+  padding-bottom: 60px;
+}
+
+#footer {
+  box-sizing: border-box;
+  height: 60px;
+  margin-left: 0px;
+  transition: margin-left 0.2s;
+}
+
+@media (min-width: 768px) {
+  #header {
+    left: 200px;
+  }
+  
+  #sidedrawer {
+    transform: translate(200px);
+  }
+  
+  #content-wrapper {
+    margin-left: 200px;
+  }
+  
+  #footer {
+    margin-left: 200px;
+  }
+  
+  body.hide-sidedrawer #header {
+    left: 0;
+  }
+  
+  body.hide-sidedrawer #sidedrawer {
+    transform: translate(0px);
+  }
+  
+  body.hide-sidedrawer #content-wrapper {
+    margin-left: 0;
+  }
+  
+  body.hide-sidedrawer #footer {
+    margin-left: 0;
+  }
+}
+
+.subheader {
+    font-size: 1.6em;
+}
+
+.caption {
+  font-size: 0.8em;
+  color: #999;
+  font-style: italic;
+}
+
+pre code {
+    display: block;
+    background: none;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 0;
+}
+
+/* For all <code> */
+code {
+    font-family: MyFancyCustomFont, monospace;
+    font-size: inherit;
+  }
+  
+  /* Code in text */
+  p > code,
+  li > code,
+  dd > code,
+  td > code {
+    background: #ffeff0;
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    padding: .1rem .3rem .2rem;
+    border-radius: .2rem;
+  }
+
+/**
+ * Footer CSS
+ */
+
+#footer {
+  color: #fff;
+}
+
+#footer a {
+  color: #fff;
+  text-decoration: underline;
+}

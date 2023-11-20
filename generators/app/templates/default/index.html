@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="https://cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" /> -->
+    <script src="{{root}}/static/prism.js"></script>
+    <link href="{{root}}/static/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{root}}/static/prism.css" rel="stylesheet" type="text/css" />
+    <link href="{{root}}/static/prism-shades-of-purple.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.muicss.com/mui-latest/js/mui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="{{root}}/static/script.js"></script> -->
+  </head>
+  <body class="line-numbers bg-base-200">
+    <div id="sidedrawer" class="bg-base-200">
+      <ul class="menu bg-base-200 text-gray-300">
+        {% if items.all %}
+        <li>
+          <strong>All</strong>
+          <ul class="menu bg-base-200">
+            {% for item in items.all %}
+            <li class="max-w-36"><a href="{{root}}/all/{{item.name}}.html">{{item.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+        {% if items.components %}
+        <li>
+          <strong>Components</strong>
+          <ul class="menu bg-base-200">
+            {% for item in items.components %}
+            <li class="max-w-36"><a href="{{root}}/components/{{item.name}}.html">{{item.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+        {% if items.pages %}
+        <li>
+          <strong>Pages</strong>
+          <ul class="menu bg-base-200">
+            {% for item in items.pages %}
+            <li><a href="{{root}}/pages/{{item.name}}.html">{{item.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+        {% if items.stores %}
+        <li>
+          <strong>Stores</strong>
+          <ul class="menu bg-base-200">
+            {% for item in items.stores %}
+            <li><a href="{{root}}/stores/{{item.name}}.html">{{item.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <header id="header" class="bg-gray-800 border-black flex items-center p-4">
+        <div class="text-bold text-xl">
+            {{configFile.title}}
+        </div>
+    </header>
+    <div id="content-wrapper">
+        <div class="p-4 border-b border-gray-600">
+            <div class="text-bold text-2xl">
+                {{item.name}} 
+                {% if item.lang %}
+                    ({{item.lang}})
+                {% endif %}
+            </div>
+            <span class="caption">{{item.path}}</span>
+        </div>
+      {% if item %}
+        <div>
+            <!-- template -->
+            {% if item.template %}
+            <div class="text-lg text-bold w-full p-4">#Template</div>
+            <div class="px-4 pb-4">
+                <pre>
+                    <code class="language-markup">
+{{item.template}}
+                    </code>                     
+                </pre>
+            </div>
+            {% endif %}
+            {% if item.slots %}
+            <div class="text-lg text-bold w-full p-4">#Slots</div>
+            <div class="px-4 width-full pb-4">
+                <ul class="list-none bg-gray-800 p-4 leading-releaxed">
+                    {% for slot in item.slots %}
+                    <li class="text-md p-1">
+                        #{{slot.name}}
+                        {% if slot.content %}
+                        (default: <span>{{slot.content}}</span>)
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- defineProps -->
+            {% if item.defineProps %}
+            <div class="text-lg text-bold w-full p-4">#Properties</div>
+            <div class="px-4 pb-4">
+                <pre>   
+                    <code class="language-css">
+{{item.defineProps}}
+                    </code>                     
+                </pre>
+            </div>
+            {% endif %}
+
+            <!-- defineEmits -->
+            {% if item.defineEmits %}
+            <div class="text-lg text-bold w-full p-4">#Emits</div>
+            <div class="px-4 pb-4">
+                <pre>
+                    <code class="language-css">
+    {{item.defineEmits}}
+                    </code>                     
+                </pre>
+            </div>
+            {% endif %}
+
+            <!-- style -->
+            {% if item.styles %}
+            <div class="text-lg text-bold w-full p-4">#Style</div>
+            <div class="px-4 pb-4">
+                <pre>
+                    <code class="language-css">
+    {{item.styles}}
+                    </code>
+                </pre>
+            </div> 
+            {% endif %}
+        </div>
+    {% endif %}
+    </div>
+    <footer id="footer" class="bg-gray-800">
+      <div class="text-xs p-4 text-center w-full">
+        Made with ♥ by <a href="https://github.com/lordrepha1980/vue-happy-little-doc" target="_blank">Happy Little Docs</a>
+      </div>
+    </footer>
+  </body>
+</html>
