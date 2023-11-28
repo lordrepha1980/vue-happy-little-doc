@@ -1,6 +1,6 @@
 # Vue-Happy-Little-Docs
 
-Vue3 documentation generator only Vue `script setup tag`.
+Vue3 documentation generator only Vue3 `script setup tag`.
 
 ## Installation
 First, install [Yeoman](http://yeoman.io) and vue-happy-little-docs using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
@@ -27,3 +27,5 @@ Create a file named `hld-config.json` in the directory where you want to generat
 ```bash
 yo vue-happy-little-doc build
 ```
+
+then go to directory `happy-little-docs` and open index.html in a webbrowser
