@@ -1,0 +1,18 @@
+{% macro menulink(root, name, items, type) %}
+<li>
+    <strong class="uppercase">{{type}}</strong>
+    <ul class="menu bg-base-200">
+    {% for item in items[type] %}
+        {% if name === item.name %}
+            <li class="max-w-36 text-yellow-300 group">
+        {% else %}
+            <li class="max-w-36 group">
+        {% endif %}
+            <a class="link group-hover:text-yellow-300 focus:text-yellow-300 active:text-yellow-300 target:text-yellow-300" id="{{item.id}}" href="{{root}}/{{type}}/{{item.name}}.html#{{item.id}}">
+                {{item.name}}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</li>
+{% endmacro %}

@@ -7,7 +7,7 @@ First, install [Yeoman](http://yeoman.io) and vue-happy-little-docs using [npm](
 
 ```bash
 npm install -g yo
-npm install -g vue-happy-little-docs
+npm install -g vue-happy-little-doc
 ```
 
 ## Config
@@ -25,5 +25,5 @@ Create a file named `hld-config.json` in the directory where you want to generat
 
 ## Create a documentation
 ```bash
-yo vue-happy-little-docs build
+yo vue-happy-little-doc build
 ```

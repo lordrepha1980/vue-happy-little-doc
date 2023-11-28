@@ -40,8 +40,8 @@ pre[class*=language-].line-numbers>code {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 200px;
-  left: -200px;
+  width: 300px;
+  left: -300px;
   overflow: auto;
   z-index: 2;
   transition: transform 0.2s;
@@ -68,15 +68,15 @@ pre[class*=language-].line-numbers>code {
 
 @media (min-width: 768px) {
   #header {
-    left: 200px;
+    left: 300px;
   }
   
   #sidedrawer {
-    transform: translate(200px);
+    transform: translate(300px);
   }
   
   #content-wrapper {
-    margin-left: 200px;
+    margin-left: 300px;
   }
   
   #footer {

@@ -27,7 +27,7 @@ module.exports = class extends Generator {
 		const files = FilesActions.readProject({ dirname, configFile });
 		const content = FilesActions.readFiles({ files, dirname });
 		DefaultTemplate.create({ content, configFile })
-
+		console.log(Chalk.green('Happy Little Docs generated'))
 		// let prompts = [
 		// 	{
 		// 		type: "input",

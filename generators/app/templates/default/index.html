@@ -1,9 +1,11 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{configFile.title}}</title>
+    
     <!-- <link href="https://cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" /> -->
     <script src="{{root}}/static/prism.js"></script>
     <link href="{{root}}/static/style.css" rel="stylesheet" type="text/css" />
@@ -16,59 +18,39 @@
     <script src="{{root}}/static/script.js"></script> -->
   </head>
   <body class="line-numbers bg-base-200">
+    {% import "./main.html" as main %}
     <div id="sidedrawer" class="bg-base-200">
       <ul class="menu bg-base-200 text-gray-300">
         {% if items.all %}
-        <li>
-          <strong>All</strong>
-          <ul class="menu bg-base-200">
-            {% for item in items.all %}
-            <li class="max-w-36"><a href="{{root}}/all/{{item.name}}.html">{{item.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
+            {{ main.menulink(root, item.name, items, 'all') }}
         {% endif %}
+
         {% if items.components %}
-        <li>
-          <strong>Components</strong>
-          <ul class="menu bg-base-200">
-            {% for item in items.components %}
-            <li class="max-w-36"><a href="{{root}}/components/{{item.name}}.html">{{item.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
+            {{ main.menulink(root, item.name, items, 'components') }}
         {% endif %}
+        
         {% if items.pages %}
-        <li>
-          <strong>Pages</strong>
-          <ul class="menu bg-base-200">
-            {% for item in items.pages %}
-            <li><a href="{{root}}/pages/{{item.name}}.html">{{item.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
+            {{ main.menulink(root, item.name, items, 'pages') }}
         {% endif %}
+
         {% if items.stores %}
-        <li>
-          <strong>Stores</strong>
-          <ul class="menu bg-base-200">
-            {% for item in items.stores %}
-            <li><a href="{{root}}/stores/{{item.name}}.html">{{item.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
+            {{ main.menulink(root, item.name, items, 'stores') }}
         {% endif %}
       </ul>
     </div>
     <header id="header" class="bg-gray-800 border-black flex items-center p-4">
         <div class="text-bold text-xl">
+            <img src="{{root}}/static/logo.png" alt="logo" style="margin-right: 20px;width: 32px; display: inline-block">
             {{configFile.title}}
         </div>
     </header>
     <div id="content-wrapper">
         <div class="p-4 border-b border-gray-600">
             <div class="text-bold text-2xl">
-                {{item.name}} 
+                {{item.name}}
+                {% if item.storeName %}
+                    ({{item.storeName}})
+                {% endif %}
                 {% if item.lang %}
                     ({{item.lang}})
                 {% endif %}
@@ -77,6 +59,17 @@
         </div>
       {% if item %}
         <div>
+             <!-- interfaces -->
+             {% if item.types %}
+             <div class="text-lg text-bold w-full p-4">#Interfaces</div>
+             <div class="px-4 pb-4">
+                 <pre>
+                     <code class="language-js">
+ {{item.types}}
+                     </code>                     
+                 </pre>
+             </div>
+             {% endif %}
             <!-- template -->
             {% if item.template %}
             <div class="text-lg text-bold w-full p-4">#Template</div>
@@ -139,12 +132,49 @@
                 </pre>
             </div> 
             {% endif %}
+
+            <!-- store state -->
+            {% if item.storeProps and item.storeProps.state %}
+            <div class="text-lg text-bold w-full p-4">#State</div>
+            <div class="px-4 pb-4">
+                <pre>
+                    <code class="language-js">
+{{item.storeProps.state}}
+                    </code>
+                </pre>
+            </div> 
+            {% endif %}
+
+            <!-- store state -->
+            {% if item.storeProps and item.storeProps.getters %}
+            <div class="text-lg text-bold w-full p-4">#Getters</div>
+            <div class="px-4 pb-4">
+                <pre>
+                    <code class="language-js">
+{{item.storeProps.getters}}
+                    </code>
+                </pre>
+            </div> 
+            {% endif %}
+
+            <!-- store actions -->
+            {% if item.storeProps and item.storeProps.actions %}
+            <div class="text-lg text-bold w-full p-4">#Actions</div>
+            <div class="px-4 pb-4">
+                <pre>
+                    <code class="language-js">
+{{item.storeProps.actions}}
+                    </code>
+                </pre>
+            </div> 
+            {% endif %}
         </div>
     {% endif %}
     </div>
     <footer id="footer" class="bg-gray-800">
       <div class="text-xs p-4 text-center w-full">
-        Made with ♥ by <a href="https://github.com/lordrepha1980/vue-happy-little-doc" target="_blank">Happy Little Docs</a>
+        Made with ♥ by <a href="https://github.com/lordrepha1980/vue-happy-little-doc" target="_blank">Happy Little Docs</a>             
+        <img src="{{root}}/static/logo.png" alt="logo" style="margin-right: 20px;width: 20px; display: inline-block">
       </div>
     </footer>
   </body>
